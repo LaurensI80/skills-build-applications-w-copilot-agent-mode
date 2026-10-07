@@ -13,6 +13,19 @@
 			],
 			"isBackground": true,
 			"problemMatcher": []
+		},
+		{
+			"label": "Start Octofit backend API",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev",
+				"--prefix",
+				"octofit-tracker/backend"
+			],
+			"isBackground": true,
+			"problemMatcher": []
 		}
 	]
 }
