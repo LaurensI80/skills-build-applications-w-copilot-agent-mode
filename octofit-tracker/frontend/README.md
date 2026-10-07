@@ -1,16 +1,34 @@
-# React + Vite
+# Octofit Tracker frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+The presentation tier is a React 19 application built with Vite, React Router,
+and Bootstrap. Start the Vite development server from the repository root with:
 
-Currently, two official plugins are available:
+```bash
+npm run dev --prefix octofit-tracker/frontend
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## API configuration
 
-## React Compiler
+When running in GitHub Codespaces, define `VITE_CODESPACE_NAME` in
+`octofit-tracker/frontend/.env.local` using the Codespace name (not its full
+URL), for example:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```dotenv
+VITE_CODESPACE_NAME=your-codespace-name
+```
 
-## Expanding the Oxlint configuration
+This variable must be defined for Codespaces so the frontend can reach the API
+at `https://<VITE_CODESPACE_NAME>-8000.app.github.dev`. Restart the Vite
+development server after changing `.env.local`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+If `VITE_CODESPACE_NAME` is unset, the frontend safely uses
+`http://localhost:8000`. The app reads these API endpoints:
+
+- `/api/activities/`
+- `/api/leaderboard/`
+- `/api/teams/`
+- `/api/users/`
+- `/api/workouts/`
+
+Responses may be plain arrays or paginated objects with a `results` array. An
+object containing a `data` array is also accepted.
